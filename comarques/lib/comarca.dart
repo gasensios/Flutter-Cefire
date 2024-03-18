@@ -35,10 +35,18 @@ class Comarca {
   }
 
   @override
-  String toString() => '''\x1B[30mComarca:\t\x1B[30m$comarca\x1B[0m
-    \x1B[30mCapital:\t\x1B[30m$capital\n\x1B[0m
-    \x1B[30mPoblació:\t\x1B[30m$poblacio\n\x1B[0m
-    \x1B[30mImatge:\t\x1B[31m$img\n\x1B[0m
-    \x1B[30mDescripció:\t\x1B[30m$desc\n\x1B[0m
-    \x1B[30mCoordenades:\t\x1B[30m($latitud,$longitud)\n\x1B[0m''';
+  String toString(){
+    if (capital != null){
+      return ('''\x1B[30mComarca:\t\x1B[30m$comarca\x1B[0m
+              \x1B[30mCapital:\t\x1B[30m$capital\n\x1B[0m
+              \x1B[30mPoblació:\t\x1B[30m$poblacio\n\x1B[0m
+              \x1B[30mImatge:\t\x1B[31m$img\n\x1B[0m
+              \x1B[30mDescripció:\t\x1B[30m$desc\n\x1B[0m
+              \x1B[30mCoordenades:\t\x1B[30m($latitud,$longitud)\n\x1B[0m''');
+    }
+    else {
+      return ('''\x1B[30mNom:\t\x1B[30m$comarca\x1B[0m
+              \x1B[30mImatge:\t\x1B[30m$img\n\x1B[0m''');
+    }
+  }
 }
