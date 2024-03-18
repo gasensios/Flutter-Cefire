@@ -90,11 +90,19 @@ mostraComarques(String provincia) {
   // Obtenir la llista de províncies i mostrar-la per pantalla
   Future<List<dynamic>> respostaFuture = ComarquesService.obtenirComarques(provincia);
 
+  List<dynamic> llistaComarques = [];
+
   // Preparem el callback
   respostaFuture.then((resposta) {
     // Mostrem la llista dinamica de les comarques
     if (resposta.isNotEmpty) {
-      print(resposta.toString());
+      for (var comarca in resposta) {
+        llistaComarques.add(Comarca(
+            comarca: comarca["nom"],
+            img: comarca["img"],
+        ));
+      }
+      print(llistaComarques.toString());
     } else {
       print("\x1B[31mLa provincia sol.licitada no existeix\x1B[0m");
     }
@@ -115,6 +123,3 @@ mostraInfoComarca(String comarca) {
     }
   });
 }
-
-
-
