@@ -63,20 +63,22 @@ class ComarquesService {
           "https://node-comarques-rest-server-production.up.railway.app/api/comarques/comarquesAmbImatge/$provincia";
       var data = await http.get(Uri.parse(url));
 
+      List<dynamic> llistaComarques = [];
+
       if (data.statusCode == 200) {
         // Si hi ha resposta la processem per retornar-la com la llista de comarques
         String body = utf8.decode(data.bodyBytes);
-        final bodyJSON = jsonDecode(body);
-
+        llistaComarques = jsonDecode(body) as List;
         // Es retorna el llistat de comarques contingut en el JSON
-        return bodyJSON;
+      return llistaComarques;
       }
-      return [];
-    } catch (except) {
+     return [];
+     } catch (except) {
       print(except.toString());
       return [];
-    }
-  } 
+     }
+   }
+  
   
 
   static Future<Comarca?> infoComarca(String comarca) async {
